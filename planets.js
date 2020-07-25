@@ -136,7 +136,7 @@ const planetList = [
 ];
 
 function addSaturnRings() {
-	let saturnRings = textureLoader.load("../images/planets/saturnring.png");
+	let saturnRings = textureLoader.load("images/planets/saturnring.png");
 	let geometry = new THREE.RingBufferGeometry(1, 5, 64);
 	let pos = geometry.attributes.position;
 	let v3 = new THREE.Vector3();
@@ -167,8 +167,8 @@ function addSaturnRings() {
 }
 
 function addMoons(moonCount, planetSize, parentGroup, listOfMoonGroups) {
-	let moonColor = textureLoader.load("../images/moonmap.jpg");
-	let moonBump = textureLoader.load("../images/moonbump.jpg");
+	let moonColor = textureLoader.load("images/moonmap.jpg");
+	let moonBump = textureLoader.load("images/moonbump.jpg");
 
 	let moon = new THREE.MeshPhongMaterial({ map: moonColor, bumpMap: moonBump, bumpScale: 0.001 });
 
@@ -209,9 +209,9 @@ function positionAsteroids(rootGroup) {
 var loader = new THREE.OBJLoader();
 let asteroidModels = [];
 
-loader.load('../images/models/asteroids/asteroid1.obj', ( object ) => {
+loader.load('images/models/asteroids/asteroid1.obj', ( object ) => {
 	asteroidModels.push(object);
-	loader.load('../images/models/asteroids/asteroid2.obj', ( object2 ) => {
+	loader.load('images/models/asteroids/asteroid2.obj', ( object2 ) => {
 		asteroidModels.push(object2);
 		for (let i = 0; i < numberOfAsteroids; i++) {
 			let asteroidGroup = new THREE.Object3D;
@@ -261,10 +261,10 @@ function positionPlanet(offset, planet, rootGroup, size) {
 }
 
 function generatePlanet(planet, typeOfContour) {
-	maps[planet] = textureLoader.load(`../images/planets/${planet}map.jpg`);
+	maps[planet] = textureLoader.load(`images/planets/${planet}map.jpg`);
 	maps[planet].wrapS = maps[planet].wrapT = THREE.RepeatWrapping;
 	if (typeOfContour !== "none") {
-		contourMaps[planet] = textureLoader.load(`../images/planets/${planet}${typeOfContour}.${typeOfContour === "bump" ? "jpg" : "png" }`);
+		contourMaps[planet] = textureLoader.load(`images/planets/${planet}${typeOfContour}.${typeOfContour === "bump" ? "jpg" : "png" }`);
 		if (typeOfContour === "bump"){
 			materials[planet] = new THREE.MeshPhongMaterial({ map: maps[planet], bumpMap: contourMaps[planet], bumpScale: 0.001 });
 		}
@@ -352,7 +352,7 @@ function createMeshes() {
 	// earthGroup.add(meshes.earth);
 
 	// solarSystemGroup.add( earthGroup );
-	scene.background = textureLoader.load( '../images/background.jpg' );
+	scene.background = textureLoader.load( 'images/background.jpg' );
 	scene.add( solarSystemGroup );
 }
 
@@ -365,8 +365,8 @@ function createMaterials() {
 		"fogColor": { value: new THREE.Vector3( 0, 0, 0 ) },
 		"time": { value: 1.0 },
 		"uvScale": { value: new THREE.Vector2( 2.0, 1 ) },
-		"texture1": { value: textureLoader.load( '../images/cloud.png' ) },
-		"texture2": { value: textureLoader.load( '../images/lavatile.jpg' ) }
+		"texture1": { value: textureLoader.load( 'images/cloud.png' ) },
+		"texture2": { value: textureLoader.load( 'images/lavatile.jpg' ) }
 
 	};
 
@@ -387,9 +387,9 @@ function createMaterials() {
 
 
 	// // MERCURY
-	// maps.mercury = textureLoader.load("../images/planets/mercurymap.jpg");
+	// maps.mercury = textureLoader.load("images/planets/mercurymap.jpg");
 	// maps.mercury.wrapS = maps.mercury.wrapT = THREE.RepeatWrapping;
-	// contourMaps.mercury = textureLoader.load("../images/planets/mercurybump.jpg");
+	// contourMaps.mercury = textureLoader.load("images/planets/mercurybump.jpg");
 	// materials.mercury = new THREE.MeshPhongMaterial({ map: maps.mercury, bumpMap: contourMaps.mercury, bumpScale: 0.001 });
 
 	createMeshes();
